@@ -20,7 +20,7 @@ type SlideProps = {
   image: string;
 };
 
-const SlideContainer = styled(animated.div)<{ zIndex: number }>`
+const SlideContainer = styled(animated.div)<{ zindex: number }>`
   position: absolute;
   height: 70%;
   top: 50%;
@@ -28,10 +28,10 @@ const SlideContainer = styled(animated.div)<{ zIndex: number }>`
   align-items: center;
   justify-content: center;
   transform-origin: 50% 50%;
-  z-index: ${(props) => props.zIndex};
+  z-index: ${(props) => props.zindex};
 `;
 
-const SlideCard = styled(animated.div)<{ zIndex?: number}>`
+const SlideCard = styled(animated.div)<{ zindex?: number}>`
   position: relative;
   max-width: 35%;
   min-width: 30%;
@@ -49,7 +49,7 @@ const SlideCard = styled(animated.div)<{ zIndex?: number}>`
   background-position: 0 0, 11px 11px;
   border-radius: 44px;
 background: linear-gradient(225deg, #b5b3b5, #989698);
-box-shadow: ${(props) => props.zIndex === 1 ? '-30px 30px 73px #787778, 30px -30px 73px #dad7da' : 'none'};
+box-shadow: ${(props) => props.zindex === 1 ? '-30px 30px 73px #787778, 30px -30px 73px #dad7da' : 'none'};
 `;
 
 
@@ -119,8 +119,8 @@ const Slide = ({
   
 
   return (
-    <SlideContainer {...bind()} style={styleProps} zIndex={zIndex}>
-        <SlideCard onClick={() => moveSlide(offsetFromMiddle)} zIndex={zIndex}>
+    <SlideContainer {...bind()} style={styleProps} zindex={zIndex}>
+        <SlideCard onClick={() => moveSlide(offsetFromMiddle)} zindex={zIndex}>
             <Image src={image} alt="blob image" width={200} height={200} />
           {content}
         </SlideCard>

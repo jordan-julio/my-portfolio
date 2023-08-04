@@ -52,17 +52,16 @@ const VerticalCarousel: React.FC<CarouselProps> = ({ slides, goToSlide = 0, offs
 
   const [isGestureActive, setIsGestureActive] = useState(false);
 
-    const bind = useDrag(({ direction: [dx, dy], down, distance }) => {
-    if (down && distance > 100 && !isGestureActive) { // You may need to adjust this threshold
-        setIsGestureActive(true);
+  const bind = useDrag(({ direction: [dx, dy], down, distance }) => {
+    if (down && distance > 100) { // Adjust the threshold if necessary
         moveSlide(dy < 0 ? 1 : -1);
     }
     if (!down) {
         setIsGestureActive(false);
     }
     }, {
-    axis: 'y',
-    filterTaps: true,
+        axis: 'y',
+        filterTaps: true,
     });
 
   useEffect(() => {

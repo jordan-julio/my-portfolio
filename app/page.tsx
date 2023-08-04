@@ -9,6 +9,7 @@ import VerticalCarousel from './components/verticalCarousel';
 import { config } from 'react-spring';
 import { useState } from 'react';
 import GameBar from './components/gameBar';
+import { useEffect } from 'react';
 
 const slides = [
   { key: 1, content: '1', image: '/react.png' },
@@ -26,10 +27,12 @@ const DynamicBlob = dynamic(() => import('./components/blob'), {
 
 export default function Home() {
   const [offsetRadius, setOffsetRadius] = useState(2);
-  const [showNavigation, setShowNavigation] = useState(true);
   const [animationConfig, setAnimationConfig] = useState(config.gentle);
   const names = ['Jordan J.', 'JJ.'];
   const roles = ['Cyber Security.', 'Backend Development.', 'Frontend Development.']
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <ParallaxProvider>
     <main className={styles.root}>
@@ -45,7 +48,7 @@ export default function Home() {
                 <Typed strings={
                   names
                 } 
-                typeSpeed={120}
+                typeSpeed={100}
                 backSpeed={70}
                 loop
                 backDelay={3000}
@@ -61,7 +64,7 @@ export default function Home() {
                 <Typed strings={
                   roles
                 } 
-                typeSpeed={120}
+                typeSpeed={100}
                 backSpeed={30}
                 loop
                 backDelay={1000}
@@ -74,7 +77,7 @@ export default function Home() {
         </Box>
       </Parallax>
       <Parallax translateY={[20, -20]} className={styles.projectDiv}>
-        <Grid item xs={12} className={styles.imageDiv} style={{ overflow: 'hidden' }}>
+        <Grid item xs={12} className={styles.imageDiv} style={{ overflow: 'hidden', flexDirection: 'column' }}>
           <GameBar skill="JavaScript" level={90} />
           <GameBar skill="Python" level={70} />
           <GameBar skill="C++" level={50} />

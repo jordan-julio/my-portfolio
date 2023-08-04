@@ -1,0 +1,140 @@
+.blob {
+    width: 48vw;
+    height: 55vh;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+    position: relative;
+    justify-content: center;
+}
+  
+.blob:before {
+opacity: 0.98;
+content: "";
+width: 33vw;
+height: 54vh;
+position: absolute;
+box-shadow: inset 5px 5px 10px #393c3c, inset -5px -5px 10px #6a6a6a;
+background-image: linear-gradient(135deg, #85C9C8, #D4FEE6, #E5FDC9, #85C9C8);
+background-size: 200% 200%;
+background-position: 0 0;
+top: 50%;
+left: 50%;
+transform: translate3d(-50%,-50%,0) rotate(0);
+animation: morph1 10s linear infinite, changeColor 5s infinite linear;
+will-change: border-radius, transform;
+pointer-events: none;
+transition: background 0.5s ease-in-out;
+z-index: 0;
+}
+
+.blob:after {
+animation: morph2 6s ease-in-out infinite, changeColor 5s infinite linear;
+z-index: 1;
+}
+
+@keyframes changeColor {
+0% {
+    background: #e7e7e7;
+}
+25% {
+    background: #d5d4ea;
+}
+50% {
+    background: #daf3ff;
+}
+75% {
+    background: #d5d4ea;
+}
+100% {
+    background: #e7e7e7;
+}
+}
+
+@keyframes morph1 {
+0% {
+    border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%;
+}
+25% {
+    border-radius: 40% 60% 70% 30% / 60% 70% 30% 40%;
+}
+50% {
+    border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+}
+75% {
+    border-radius: 40% 60% 70% 30% / 60% 50% 50% 60%;
+}
+100% {
+    border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%;
+}
+}
+
+@keyframes morph2 {
+0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+25% {
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+}
+50% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+75% {
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+}
+100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+}
+
+
+.blobImage {
+width: 40vw;
+height: 40vh;
+object-fit: contain;
+position: absolute;
+}
+
+@media only screen and (max-width: 1200px) {
+.blob {
+    width: 40vw;
+}
+.blob:before {
+    width: 40vw;
+    height: 50vh;
+}
+.blobImage {
+    width: 30vw;
+    height: 30vh;
+}
+}
+
+.blob-bubble {
+position: absolute;
+border-radius: 50%;
+background-color: #9cd7d6;
+animation: bubbleMove 6.5s linear forwards, fadeInOut 7s ease-in-out forwards, morph1 6s linear infinite;
+z-index: -10;
+}
+
+@keyframes bubbleMove {
+to {
+    left: var(--end-left);
+    top: var(--end-top);
+}
+}
+
+@keyframes fadeInOut {
+0% {
+    opacity: 0.5;
+}
+10% {
+    opacity: 0.7;
+}
+90% {
+    opacity: 0.5;
+}
+100% {
+    opacity: 0;
+}
+}

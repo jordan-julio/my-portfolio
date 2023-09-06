@@ -98,18 +98,19 @@ export default function Home() {
   const names = ['Jordan J.', 'JJ.'];
   const roles = ['Cyber Security.', 'Backend.', 'Frontend.']
 
-  let details = window.navigator.userAgent
-  let regexp = /android|iphone|kindle|ipad/i;
-  let isMobileDevice = regexp.test(details);
-
   useEffect(() => {
+    let details = window.navigator.userAgent;
+    let regexp = /android|iphone|kindle|ipad/i;
+    let isMobileDevice = regexp.test(details);
+  
     if (isMobileDevice) {
       const imageDiv = document.querySelector("#imageDiv") as HTMLDivElement;
       if (imageDiv) {
         imageDiv.style.setProperty('display', 'none');
       }
     }
-  }, [isMobileDevice]);
+  }, []);
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -178,22 +179,26 @@ export default function Home() {
         }}>
             Experiences, Skills, and Achievements
           </Typography>
-          <Grid container rowSpacing={1} columns={{ xs: 4, sm: 8, md: 12 }} className={styles.gridprojects}>
-            {slides.map((item) => (
-              <Grid item={true} xs={4} sm={4} md={4} key={item.key} style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-                <ListItem alignItems='center' style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}>
-              <ElasticCarousel objectfit={item.objectfit} key={item.key} imageUrl={item.image} title={item.content} details={item.details} />
-              </ListItem>
-            </Grid>
-            ))}
-          </Grid>
+          <Grid container spacing={1} rowSpacing={6} columnSpacing={1}>
+  {slides.map((item) => (
+    <Grid 
+      item 
+      key={item.key} 
+      xs={12}  // Extra small screen, 1 item per row
+      sm={6}   // Small screen, 2 items per row
+      md={4}   // Medium and up, 3 items per row
+      lg={4}
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+        <ElasticCarousel objectfit={item.objectfit} key={item.key} imageUrl={item.image} title={item.content} details={item.details} />
+    </Grid>
+  ))}
+</Grid>
+
       </div>
       <Parallax className={styles.contact}>
 

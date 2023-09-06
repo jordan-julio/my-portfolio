@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import * as THREE from 'three';
+// @ts-ignore
 import { swarmBackground } from 'threejs-toys';
 
 const ThreeParticleComponent = () => {

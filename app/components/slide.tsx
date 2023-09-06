@@ -4,7 +4,7 @@ import { animated, useSpring } from 'react-spring';
 import { withGesture } from 'react-with-gesture';
 import { CSSProperties } from 'react';
 import { useDrag } from 'react-use-gesture'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 
 type SlideProps = {

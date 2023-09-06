@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import styles from './navbar.module.css';
 import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, ListItem, useMediaQuery } from '@mui/material';
 import Menu from '@mui/icons-material/Menu';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';

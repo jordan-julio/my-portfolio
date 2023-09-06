@@ -1,8 +1,8 @@
 //carousels/Elastic.js
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
 import styles from './elasticCarousel.module.css'
-import Image from 'next/image';
+import Image from "next/image";
 import styled from 'styled-components';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -66,12 +66,27 @@ export default function ElasticCarousel({ imageUrl, title, details, objectfit } 
         { width: 768, itemsToShow: 3 },
         { width: 1200, itemsToShow: 4 }
     ];
-    const fitting: string = objectfit;
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        if (imgRef.current) {
+            imgRef.current.style.objectFit = objectfit;
+        }
+    }, [objectfit]);
+
     const paragraphs = details.split('\n').map((paragraph, index) => <p key={index}>{paragraph}</p>);
     return (
         <div className={styles.card}>
         <div className={styles.upperpart}>
-            <Image objectFit={objectfit} sizes='100%' layout='fill' className={styles.upperpartface} src={imageUrl} alt='image' />
+            <Image
+            ref={imgRef}
+            quality={100}
+            fill
+            sizes='50vw'
+            className={styles.upperpartface}
+            src={imageUrl}
+            alt='image'
+            />
             <div className={styles.upperpartback}>{paragraphs}</div>
         </div>
         <div className={styles.lowerpart}>

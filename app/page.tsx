@@ -11,7 +11,7 @@ import { useState, useRef } from 'react';
 import GameBar from './components/gameBar';
 import { useEffect } from 'react';
 import ThreeParticleComponent from './components/threeparticle';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import ElasticCarousel from './components/elasticCarousel';
 import FancyButton from './components/fancyButton';
 import ListItem from '@mui/material/ListItem';

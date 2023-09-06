@@ -180,7 +180,7 @@ export default function Home() {
           </Typography>
           <Grid container rowSpacing={1} columns={{ xs: 4, sm: 8, md: 12 }} className={styles.gridprojects}>
             {slides.map((item) => (
-              <Grid xs={4} sm={4} md={4} key={item.key} style={{
+              <Grid item={true} xs={4} sm={4} md={4} key={item.key} style={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',

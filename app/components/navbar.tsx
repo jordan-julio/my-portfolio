@@ -18,15 +18,10 @@ const Navbar: React.FC = () => {
   let isMobileDevice = regexp.test(details);
   const [slideToRight, setSlideToRight] = React.useState(false);
   const [disableNativeClose, setDisableNativeClose] = React.useState(false);
-  
-  const handleDrawerOpen = () => {
-    setDisableNativeClose(false);
-    setMobileOpen(true);
-  };
 
   useEffect(() => {
     if (isMobileDevice) {
-      const card = document.querySelector("#card");
+      const card = document.querySelector("#card") as HTMLDivElement;
       if (card) {
         card.style.setProperty('--before-display', 'none');
         card.style.setProperty('--after-display', 'none');

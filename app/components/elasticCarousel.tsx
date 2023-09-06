@@ -66,11 +66,12 @@ export default function ElasticCarousel({ imageUrl, title, details, objectfit } 
         { width: 768, itemsToShow: 3 },
         { width: 1200, itemsToShow: 4 }
     ];
+    const fitting: string = objectfit;
     const paragraphs = details.split('\n').map((paragraph, index) => <p key={index}>{paragraph}</p>);
     return (
         <div className={styles.card}>
         <div className={styles.upperpart}>
-            <Image objectFit={objectfit} fill={true} className={styles.upperpartface} src={imageUrl} alt='image' />
+            <Image objectFit={objectfit} sizes='100%' layout='fill' className={styles.upperpartface} src={imageUrl} alt='image' />
             <div className={styles.upperpartback}>{paragraphs}</div>
         </div>
         <div className={styles.lowerpart}>

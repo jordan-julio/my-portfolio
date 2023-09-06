@@ -1,94 +1,36 @@
 'use client'
 import styles from './page.module.css'
 import { Grid, Typography, Box } from '@mui/material';
-import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import dynamic from 'next/dynamic';
 import Typed from 'react-typed';
 import 'react-typed/dist/animatedCursor.css';
-import VerticalCarousel from './components/verticalCarousel';
 import { config } from 'react-spring';
 import { useState, useRef } from 'react';
-import GameBar from './components/gameBar';
 import { useEffect } from 'react';
-import ThreeParticleComponent from './components/threeparticle';
-import Image from 'next/image';
-import ElasticCarousel from './components/elasticCarousel';
-import FancyButton from './components/fancyButton';
+import ThreeParticleComponent from '../components/threeparticle';
+import ElasticCarousel from '../components/elasticCarousel';
+import FancyButton from '../components/fancyButton';
 import ListItem from '@mui/material/ListItem';
 
 const slides = [
-  { key: 1,
-    content: 'Siam Savvy (Web Developer Intern)',
-    image: '/SiamWeb.png',
-    details: `- Worked as a Wix Developer Intern.\n- Created a Tour & Travel Website.`,
-    objectfit: 'unset' 
-  },
-  { key: 2, 
-    content: 'Meyd.it (Full Stack Developer Intern)', 
-    image: '/Meyd.it.png', 
-    details: '- Worked as a Full Stack Developer Intern.\n- Created a Fashion Website for a Startup Company (Meyd.it).\n- Used AdonisJS, NextJS, and PostgreSQL.', 
-    objectfit: 'unset'
-  },
-  { key: 3, 
-    content: 'Inventory System with POS (Personal Project)', 
-    image: '/inventoryweb.png', 
-    details: '- Created an Inventory System with POS.\n - Used Laravel and Phpmyadmin.', 
-    objectfit: 'unset'
-  },
-  { key: 4, 
-    content: 'C Language', 
-    image: '/CLogo.png', 
-    details: '- Experience in C language from university courses, and competitive programming.', 
-    objectfit: 'contain'
-  },
-  { key: 5, 
-    content: 'JavaScript', 
-    image: '/JSLogo.png', 
-    details: '- Several Interns and Projects using JavaScript.\n - Used in University Courses.', 
-    objectfit: 'contain'
-  },
-  { key: 6, 
-    content: 'TypeScript',
-    image: '/tsLogo.png', 
-    details: '- Experience in TypeScript from university courses.\n - Used to make this portfolio and Meyd.it Intern.', 
-    objectfit: 'unset'
-  },
-  { key: 7, 
-    content: 'Python Language', 
-    image: '/PythonLogo.png', 
-    details: '- My first and preferred programming language for competitive programming.\n - Used in University Courses.', 
-    objectfit: 'unset'
-  },
-  { key: 8, 
-    content: 'React', 
-    image: '/reactLogo.png', 
-    details: '- Several Github Projects and Intern using React.', 
-    objectfit: 'contain'
-  },
-  { key: 9, 
-    content: 'NextJS', 
-    image: '/next.svg', 
-    details: '- This Portfolio and Meyd.it Intern using NextJS.', 
-    objectfit: 'unset'
-  },
-  { key: 10, 
-    content: 'IYCL Mekari Competition Rank #23', 
-    image: '/iycl.png', 
-    details: '- Participated in IYCL Mekari Competition\n - Achieved Rank #23.', 
-    objectfit: 'contain'
-  },
-  { key: 11, 
-    content: 'Silver Standard IAYP', 
-    image: '/iayp.jpg', 
-    details: '- Achieved Silver Standard for International Award for Young People.', 
-    objectfit: 'unset'
-  },
+  { key: 1, content: 'Siam Savvy (Web Developer Intern)', image: '/SiamWeb.png', details: '', objectfit: 'unset' },
+  { key: 2, content: 'Meyd.it (Full Stack Developer Intern)', image: '/Meyd.it.png', details: '', objectfit: 'unset'},
+  { key: 3, content: 'Inventory System with POS (Personal Project)', image: '/inventoryweb.png', details: '', objectfit: 'unset'},
+  { key: 4, content: 'C Language', image: '/CLogo.png', details: '', objectfit: 'contain'},
+  { key: 5, content: 'JavaScript', image: '/JSLogo.png', details: '', objectfit: 'contain'},
+  { key: 6, content: 'TypeScript', image: '/tsLogo.png', details: '', objectfit: 'unset'},
+  { key: 7, content: 'Python Language', image: '/PythonLogo.png', details: '', objectfit: 'unset'},
+  { key: 8, content: 'React', image: '/reactLogo.png', details: '', objectfit: 'contain'},
+  { key: 9, content: 'NextJS', image: '/next.svg', details: '', objectfit: 'unset'},
+  { key: 10, content: 'IYCL Mekari Competition Rank #23', image: '/iycl.png', details: '', objectfit: 'contain'},
+  { key: 11, content: 'Silver Standard IAYP', image: '/iayp.jpg', details: '', objectfit: 'unset'},
 ];
-const DynamicNavbar = dynamic(() => import('./components/navbar'), {
+const DynamicNavbar = dynamic(() => import('../components/navbar'), {
   ssr: false,
 });
 
-const DynamicBlob = dynamic(() => import('./components/blob'), {
+const DynamicBlob = dynamic(() => import('../components/blob'), {
   ssr: false,
 });
 

@@ -9,7 +9,7 @@
 }
   
 .blob:before {
-opacity: 0.98;
+opacity: 1;
 content: "";
 width: 33vw;
 height: 54vh;
@@ -87,20 +87,41 @@ z-index: 1;
 }
 }
 
+.outerLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .blobImage {
-width: 40vw;
-height: 40vh;
+width: auto;
+height: 60dvh;
 object-fit: contain;
-position: absolute;
+z-index: 1;
+
+padding: 10px;
+border-radius: 14px;  
+}
+@media (max-width: 990px) {
+.blob {
+    width: 80% !important;
+    transform: translateX(15%);
+    margin-bottom: 50px;
+}
 }
 
+@media (max-width: 390px) {
+    .blob {
+        height: 50vh;
+    }
+    }
 @media only screen and (max-width: 1200px) {
 .blob {
-    width: 40vw;
+    width: 100%;
 }
 .blob:before {
-    width: 40vw;
+    position: relative;
+    width: 94%;
     height: 50vh;
 }
 .blobImage {

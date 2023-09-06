@@ -32,9 +32,10 @@ const SlideContainer = styled(animated.div)<{ zindex: number }>`
 `;
 
 const SlideCard = styled(animated.div)<{ zindex?: number}>`
+  flex-direction: column;
   position: relative;
-  max-width: 35%;
-  min-width: 30%;
+  max-width: 45%;
+  min-width: 45%;
   width: 100vw;
   height: 100%;
   background: white;
@@ -121,8 +122,31 @@ const Slide = ({
   return (
     <SlideContainer {...bind()} style={styleProps} zindex={zIndex}>
         <SlideCard onClick={() => moveSlide(offsetFromMiddle)} zindex={zIndex}>
-            <Image src={image} alt="blob image" width={200} height={200} />
-          {content}
+          <div style={{
+            height: '20%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            {content}
+          </div>
+          <div style={{
+            height: '80%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-end',
+            position: 'relative',
+          }}>
+            <Image src={image} alt="blob image" style={{
+              width: '100%',
+              borderEndEndRadius: '44px',
+              borderEndStartRadius: '44px',
+            }}
+            width={1000}
+            height={1000}
+            />
+          </div>
         </SlideCard>
     </SlideContainer>
     )

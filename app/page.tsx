@@ -15,6 +15,7 @@ import Image from "next/legacy/image";
 import ElasticCarousel from './components/elasticCarousel';
 import FancyButton from './components/fancyButton';
 import ListItem from '@mui/material/ListItem';
+import Contactform from './components/ContactForm';
 
 const slides = [
   { key: 1,
@@ -25,7 +26,7 @@ const slides = [
   },
   { key: 2, 
     content: 'Meyd.it (Full Stack Developer Intern)', 
-    image: '/Meyd.it.png', 
+    image: '/meydit.png', 
     details: '- Worked as a Full Stack Developer Intern.\n- Created a Fashion Website for a Startup Company (Meyd.it).\n- Used AdonisJS, NextJS, and PostgreSQL.', 
     objectfit: 'unset'
   },
@@ -201,7 +202,7 @@ export default function Home() {
 
       </div>
       <Parallax className={styles.contact}>
-
+        <Contactform />
       </Parallax>
     </main>
     </ParallaxProvider>

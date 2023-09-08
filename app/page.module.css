@@ -259,7 +259,7 @@
   }
   .textName {
     font-size: 40px;
-    font-size: 2.5em !important;
+    font-size: 2.3em !important;
   }
   .imageDiv {
     width: 100%;
@@ -357,4 +357,5 @@
   width: 100%;
   top: 0;
   height: 100vh;
+  padding: 20px;
 }

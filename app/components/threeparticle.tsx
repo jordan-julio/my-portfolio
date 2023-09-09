@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import * as THREE from 'three';
 // @ts-ignore
 import { swarmBackground } from 'threejs-toys';
-
+import styles from './threeparticle.module.css';
 const ThreeParticleComponent = () => {
   useEffect(() => {
     const bg = swarmBackground({
@@ -56,7 +56,7 @@ const ThreeParticleComponent = () => {
   return (
     <div id="three-container" style={{ width: '100vw', height: '100vh', zIndex: -1, position: 'fixed',
     top: 0,
-    left: 0, }}>
+    left: 0, }} className={styles.fadein}>
       {/* Three.js will attach its canvas here */}
       <div style={{
         width: '100vw',

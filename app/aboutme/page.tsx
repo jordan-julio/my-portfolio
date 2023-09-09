@@ -1,5 +1,6 @@
 'use client'
 import styles from './page.module.css'
+import { usePathname, useSearchParams } from 'next/navigation';
 import { Grid, Typography, Box } from '@mui/material';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import dynamic from 'next/dynamic';
@@ -12,6 +13,7 @@ import ThreeParticleComponent from '../components/threeparticle';
 import ElasticCarousel from '../components/elasticCarousel';
 import FancyButton from '../components/fancyButton';
 import ListItem from '@mui/material/ListItem';
+import Loading from '../components/loading';
 
 const DynamicNavbar = dynamic(() => import('../components/navbar'), {
   ssr: false,
@@ -19,15 +21,10 @@ const DynamicNavbar = dynamic(() => import('../components/navbar'), {
 
 
 export default function Home() {
-  const [offsetRadius, setOffsetRadius] = useState(2);
-  const [animationConfig, setAnimationConfig] = useState(config.gentle);
-  const names = ['Jordan J.', 'JJ.'];
-  const roles = ['Cyber Security.', 'Backend.', 'Frontend.']
   return (
     <ParallaxProvider>
-      <ThreeParticleComponent />
-      <main className={styles.root}>
-        <DynamicNavbar />
+      <DynamicNavbar />
+      <main className={`${styles.root}${styles.fadein}`}>
       </main>
     </ParallaxProvider>
   )

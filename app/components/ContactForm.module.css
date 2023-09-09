@@ -255,12 +255,12 @@
   }
 
 .customButton {
-    box-shadow: none;
+    box-shadow: none !important;
 }
 
 .customButton::after {
-    opacity: 0.5;
-    transform: perspective(2.5em) rotateX(35deg) scale(1, 0.9);
+    opacity: 0.5 Im !important;
+    transform: perspective(3.5em) rotateX(-35deg) scale(1, 0.9) !important;
 }
 
 .error {

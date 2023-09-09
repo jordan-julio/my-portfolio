@@ -1,20 +1,14 @@
 'use client'
 import styles from './page.module.css'
 import { Grid, Typography, Box } from '@mui/material';
-import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import dynamic from 'next/dynamic';
 import Typed from 'react-typed';
 import 'react-typed/dist/animatedCursor.css';
-import VerticalCarousel from './components/verticalCarousel';
-import { config } from 'react-spring';
-import { useState, useRef } from 'react';
-import GameBar from './components/gameBar';
 import { useEffect } from 'react';
 import ThreeParticleComponent from './components/threeparticle';
-import Image from "next/legacy/image";
 import ElasticCarousel from './components/elasticCarousel';
 import FancyButton from './components/fancyButton';
-import ListItem from '@mui/material/ListItem';
 import Contactform from './components/ContactForm';
 
 const slides = [
@@ -94,10 +88,9 @@ const DynamicBlob = dynamic(() => import('./components/blob'), {
 });
 
 export default function Home() {
-  const [offsetRadius, setOffsetRadius] = useState(2);
-  const [animationConfig, setAnimationConfig] = useState(config.gentle);
   const names = ['Jordan J.', 'JJ.'];
   const roles = ['Cyber Security.', 'Backend.', 'Frontend.']
+
 
   useEffect(() => {
     let details = window.navigator.userAgent;
@@ -117,10 +110,10 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <ParallaxProvider>
-      <ThreeParticleComponent />
-      <main className={styles.root}>
-      <DynamicNavbar />
+    <ParallaxProvider scrollAxis='vertical'>
+            <DynamicNavbar />
+        <ThreeParticleComponent />
+        <main className={`${styles.root} ${styles.fadein}`}>
       <Parallax translate='yes' translateY={[-25,25]}>
         {/**
          * https://github.com/klevron/threejs-toys
@@ -204,7 +197,7 @@ export default function Home() {
       <Parallax className={styles.contact}>
         <Contactform />
       </Parallax>
-    </main>
+      </main>
     </ParallaxProvider>
   )
 }

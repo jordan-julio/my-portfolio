@@ -6,8 +6,13 @@
     transition: all 0.8s;
     perspective: 600px;
     perspective-origin: center bottom;
+    box-shadow:  -5px 5px 10px #50457d,
+             5px -5px 10px #7061b1;
+    transition: box-shadow 1s;
   }
-  
+  .card:hover{
+    box-shadow: none;
+  }
   .upperpart {
     width: 100%;
     height: 65%;

@@ -15,67 +15,67 @@ const slides = [
   { key: 1,
     content: 'Siam Savvy (Web Developer Intern)',
     image: '/SiamWeb.png',
-    details: `- Worked as a Wix Developer Intern.\n- Created a Tour & Travel Website.`,
+    details: `+ Worked as a Wix Developer Intern.\n+ Created a Tour & Travel Website.`,
     objectfit: 'unset' 
   },
   { key: 2, 
     content: 'Meyd.it (Full Stack Developer Intern)', 
     image: '/meydit.png', 
-    details: '- Worked as a Full Stack Developer Intern.\n- Created a Fashion Website for a Startup Company (Meyd.it).\n- Used AdonisJS, NextJS, and PostgreSQL.', 
+    details: '+ Worked as a Full Stack Developer Intern.\n+ Created a Fashion Website for a Startup Company (Meyd.it).\n+ Used AdonisJS, NextJS, and PostgreSQL.', 
     objectfit: 'unset'
   },
   { key: 3, 
     content: 'Inventory System with POS (Personal Project)', 
     image: '/inventoryweb.png', 
-    details: '- Created an Inventory System with POS.\n - Used Laravel and Phpmyadmin.', 
+    details: '+ Created an Inventory System with POS.\n + Used Laravel and Phpmyadmin.', 
     objectfit: 'unset'
   },
   { key: 4, 
     content: 'C Language', 
     image: '/CLogo.png', 
-    details: '- Experience in C language from university courses, and competitive programming.', 
+    details: '+ Experience in C language from university courses, and competitive programming.', 
     objectfit: 'contain'
   },
   { key: 5, 
     content: 'JavaScript', 
     image: '/JSLogo.png', 
-    details: '- Several Interns and Projects using JavaScript.\n - Used in University Courses.', 
+    details: '+ Several Interns and Projects using JavaScript.\n + Used in University Courses.', 
     objectfit: 'contain'
   },
   { key: 6, 
     content: 'TypeScript',
     image: '/tsLogo.png', 
-    details: '- Experience in TypeScript from university courses.\n - Used to make this portfolio and Meyd.it Intern.', 
+    details: '+ Experience in TypeScript from university courses.\n + Used to make this portfolio and Meyd.it Intern.', 
     objectfit: 'unset'
   },
   { key: 7, 
     content: 'Python Language', 
     image: '/PythonLogo.png', 
-    details: '- My first and preferred programming language for competitive programming.\n - Used in University Courses.', 
+    details: '+ My first and preferred programming language for competitive programming.\n + Used in University Courses.', 
     objectfit: 'unset'
   },
   { key: 8, 
     content: 'React', 
     image: '/reactLogo.png', 
-    details: '- Several Github Projects and Intern using React.', 
+    details: '+ Several Github Projects and Intern using React.', 
     objectfit: 'contain'
   },
   { key: 9, 
     content: 'NextJS', 
     image: '/next.svg', 
-    details: '- This Portfolio and Meyd.it Intern using NextJS.', 
+    details: '+ This Portfolio and Meyd.it Intern using NextJS.', 
     objectfit: 'unset'
   },
   { key: 10, 
     content: 'IYCL Mekari Competition Rank #23', 
     image: '/iycl.png', 
-    details: '- Participated in IYCL Mekari Competition\n - Achieved Rank #23.', 
+    details: '+ Participated in IYCL Mekari Competition\n + Achieved Rank #23.', 
     objectfit: 'contain'
   },
   { key: 11, 
     content: 'Silver Standard IAYP', 
     image: '/iayp.jpg', 
-    details: '- Achieved Silver Standard for International Award for Young People.', 
+    details: '+ Achieved Silver Standard for International Award for Young People.', 
     objectfit: 'unset'
   },
 ];
@@ -169,7 +169,8 @@ export default function Home() {
       <div className={styles.projectDiv} style={{ padding: '20px' }}>
         <Typography variant="h3" align="left" color='#e3e3e3' style={{
           width: '100%',
-          marginBottom: '20px'
+          marginBottom: '20px',
+          textAlign: 'center',
         }}>
             Experiences, Skills, and Achievements
           </Typography>

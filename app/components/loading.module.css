@@ -44,7 +44,7 @@
   }
   
   .boxes .box > div {
-    --background: #5C8DF6;
+    --background: #a14ff8;
     --top: auto;
     --right: auto;
     --bottom: auto;
@@ -69,18 +69,18 @@
   }
   
   .boxes .box > div:nth-child(2) {
-    --background: #145af2;
+    --background: #6d14f2;
     --right: 0;
     --rotateY: 90deg;
   }
   
   .boxes .box > div:nth-child(3) {
-    --background: #447cf5;
+    --background: #5f44f5;
     --rotateX: -90deg;
   }
   
   .boxes .box > div:nth-child(4) {
-    --background: #dbe3f43c;
+    --background: #dfd5ff;
     --top: 0;
     --left: 0;
     --translateZ: calc(var(--size) * 3 * -1);

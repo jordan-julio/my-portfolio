@@ -1,10 +1,7 @@
 'use client'
-import { useEffect, useState } from 'react';
 import styles from './loading.module.css';
 
-
 export default function Loading() {
-
     return (
         <div style={{ 
             position: 'fixed',
@@ -13,6 +10,7 @@ export default function Loading() {
             zIndex: 9999,
             width: '100vw',
             height: '100vh',
+            backgroundColor: '##D3D2EC',
         }} className={styles.changeToTransparent}>
         <div style={{
             display: 'flex',
@@ -21,6 +19,7 @@ export default function Loading() {
             justifyContent: 'center',
             height: '100vh',
             width: '100vw',
+            backgroundColor: '#D3D2EC',
         }} className={styles.slideinout}>
             <div className={styles.boxes}>
                 <div className={styles.box}>

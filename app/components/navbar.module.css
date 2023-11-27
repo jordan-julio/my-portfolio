@@ -3,7 +3,8 @@
     background: transparent;
     z-index: 999;
     position: absolute;
-    width: 100dvw;
+    width: 80dvw;
+    right: 0;
 }
 .menuButton {
     margin-left: 10px;
@@ -51,7 +52,14 @@
       transform: translateY(-10px);
     }
 }
-  
+
+.button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000000000000;
+}
+
   /* A second bounce animation for the repeated bounces */
 @keyframes bounce-delayed {
     0%, 100% {
@@ -78,9 +86,9 @@
     box-shadow: none !important;
     border-bottom: 0px !important;
     display: flex;
-    justify-content: space-between;
-    padding: 0px;
+    justify-content: flex-start;
     margin: 0px;
+    flex-direction: row-reverse;
 }
 
 .card svg {

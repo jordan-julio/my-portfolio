@@ -10,7 +10,7 @@ export default function Loading() {
             zIndex: 9999,
             width: '100vw',
             height: '100vh',
-            backgroundColor: '##D3D2EC',
+            backgroundColor: '#D3D2EC',
         }} className={styles.changeToTransparent}>
         <div style={{
             display: 'flex',

@@ -190,7 +190,7 @@
     width: 100%;
     height: 100vh;
     z-index: 1000;
-    background: #e9e9e9;
+    background: #D3D2EC;
     animation: slideIn 1s forwards, fadeout 1s 4s forwards;
   }
   
@@ -213,7 +213,7 @@
   }
 
   .changeToTransparent {
-    animation: transparency 8s forwards,
+    animation: fadeout 1s 4s forwards;
   }
   @keyframes transparency {
     0% {

@@ -11,6 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import CloseIcon from '@mui/icons-material/Close';
 import Loading from './loading';
+import FancyButton from './fancyButton';
 
 const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -106,7 +107,7 @@ const Navbar: React.FC = () => {
         <>
         </>
       }
-      <AppBar className={styles.topBar} position="static">
+      <AppBar className={styles.topBar} position="static" id='topbar'>
         <Toolbar className={styles.topBar}>
           {isMobile ? (
             <>

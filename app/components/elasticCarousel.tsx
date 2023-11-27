@@ -54,7 +54,7 @@ button.rec-dot:hover, button.rec-dot:active, button.rec-dot:focus  {
 }
 `
 
-export default function ElasticCarousel({ imageUrl, title, details, objectfit } : { imageUrl: string, title: string, details: string, objectfit: string }) {
+export default function ElasticCarousel({ imageUrl, title, details, objectfit, linkTextBack } : { imageUrl: string, title: string, details: string, objectfit: string, linkTextBack: string }) {
     const [items, setItems] = useState([
         {id: 1, title: 'item #1', imageUrl: '/SiamWeb.png'},
         {id: 2, title: 'item #2', imageUrl: '/meyd.it.png'},
@@ -91,7 +91,7 @@ export default function ElasticCarousel({ imageUrl, title, details, objectfit } 
         </div>
         <div className={styles.lowerpart}>
             <div className={styles.lowerpartface}>{title}</div>
-            <div className={styles.lowerpartback}><Button>Back Side</Button></div>
+            <div className={styles.lowerpartback}><Button>{linkTextBack}</Button></div>
         </div>
         </div>
     );

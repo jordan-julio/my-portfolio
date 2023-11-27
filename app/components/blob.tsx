@@ -9,7 +9,7 @@ export default function Blob() {
 
     return (
         <Parallax style={{ width: '100%' }} className={styles.outerLogo}>
-              <Image priority src="/profileStandremove.png" alt="blob image" width={1000} height={1000} className={styles.blobImage} />
+              <Image priority src="/hdProfileRemoved.png" alt="blob image" objectFit="contain" fill={true} className={styles.blobImage} />
         </Parallax>
     );
 }

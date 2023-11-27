@@ -246,8 +246,63 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 80dvh;
+  min-height: 100dvh;
 }
+
+.fbutton {
+  /* Circle dimensions, adjust as needed */
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  z-index: 999;
+  /* Circle shape */
+  border-radius: 50%;
+
+  /* Your color and styling preferences */
+  --glow-color: #c182fc;
+  --glow-spread-color: rgba(149, 36, 255, 0.781);
+  --btn-color: rgb(100, 61, 136);
+  border: .1em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  outline: none;
+  box-shadow: 0 0 3em .25em var(--glow-color),
+         0 0 20em 1em var(--glow-spread-color),
+         inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .3em var(--glow-color);
+  position: absolute;
+  top: -100px; /* half of the height */
+  left: -100px; /* half of the width */
+  transition: all 1s;
+
+  /* Center text in the visible quarter */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 3s ease-in-out, background-color 3s ease-in-out, color 3s ease-in-out, border 3s ease-in-out;
+}
+
+/* Hover effect with your color scheme */
+.fbutton:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 2em .15em var(--glow-color),
+         0 0 4em 1em var(--glow-spread-color),
+         inset 0 0 .75em .15em var(--glow-color);
+}
+
+/* Active state effect */
+.fbutton:active {
+  box-shadow: inset 20px 20px 31px #a46fd6,
+  inset -20px -20px 31px #de96ff;
+}
+.fbutton span {
+  transform: translate(40px, 30px); /* Adjust as per the size of the button */
+}
+
 
 .textName {
   line-height: 1.2;

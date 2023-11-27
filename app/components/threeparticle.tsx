@@ -3,6 +3,7 @@ import * as THREE from 'three';
 // @ts-ignore
 import { swarmBackground } from 'threejs-toys';
 import styles from './threeparticle.module.css';
+import FancyButton from './fancyButton';
 const ThreeParticleComponent = () => {
   useEffect(() => {
     const bg = swarmBackground({
@@ -46,7 +47,10 @@ const ThreeParticleComponent = () => {
     //document.body.addEventListener('click', () => {
     //  bg.setColors([Math.random() * 0xffffff, Math.random() * 0xffffff]);
     //});
+    const topbar = document.querySelector('#topbar');
+    console.log(topbar);
     const fancyButton = document.querySelector('#fancy-button');
+    console.log(fancyButton);
     fancyButton?.addEventListener('click', () => {
         bg.setColors([Math.random() * 0xffffff, Math.random() * 0xffffff]);
         }

@@ -94,13 +94,12 @@ z-index: 1;
 }
 
 .blobImage {
-width: auto;
-height: 60dvh;
-object-fit: contain;
-z-index: 1;
-
-padding: 10px;
-border-radius: 14px;  
+    width: auto;
+    height: 60dvh !important;
+    object-fit: contain;
+    z-index: 1;
+    position: relative !important;
+    padding: 10px;
 }
 @media (max-width: 990px) {
 .blob {

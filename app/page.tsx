@@ -1,6 +1,6 @@
 'use client'
 import styles from './page.module.css'
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box, Button } from '@mui/material';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import dynamic from 'next/dynamic';
 import Typed from 'react-typed';
@@ -16,67 +16,78 @@ const slides = [
     content: 'Siam Savvy (Web Developer Intern)',
     image: '/SiamWeb.png',
     details: `+ Worked as a Wix Developer Intern.\n+ Created a Tour & Travel Website.`,
-    objectfit: 'unset' 
+    objectfit: 'unset',
+    linkText: 'Visit Website',
   },
   { key: 2, 
     content: 'Meyd.it (Full Stack Developer Intern)', 
     image: '/meydit.png', 
     details: '+ Worked as a Full Stack Developer Intern.\n+ Created a Fashion Website for a Startup Company (Meyd.it).\n+ Used AdonisJS, NextJS, and PostgreSQL.', 
-    objectfit: 'unset'
+    objectfit: 'unset',
+    linkText: 'Visit Website',
   },
   { key: 3, 
     content: 'Inventory System with POS (Personal Project)', 
     image: '/inventoryweb.png', 
     details: '+ Created an Inventory System with POS.\n + Used Laravel and Phpmyadmin.', 
-    objectfit: 'unset'
+    objectfit: 'unset',
+    linkText: 'Visit Website',
   },
   { key: 4, 
     content: 'C Language', 
     image: '/CLogo.png', 
     details: '+ Experience in C language from university courses, and competitive programming.', 
-    objectfit: 'contain'
+    objectfit: 'contain',
+    linkText: 'C documentation',
   },
   { key: 5, 
     content: 'JavaScript', 
     image: '/JSLogo.png', 
     details: '+ Several Interns and Projects using JavaScript.\n + Used in University Courses.', 
-    objectfit: 'contain'
+    objectfit: 'contain',
+    linkText: 'JS documentation',
   },
   { key: 6, 
     content: 'TypeScript',
     image: '/tsLogo.png', 
     details: '+ Experience in TypeScript from university courses.\n + Used to make this portfolio and Meyd.it Intern.', 
-    objectfit: 'unset'
+    objectfit: 'unset',
+    linkText: 'TS documentation',
   },
   { key: 7, 
     content: 'Python Language', 
     image: '/PythonLogo.png', 
     details: '+ My first and preferred programming language for competitive programming.\n + Used in University Courses.', 
-    objectfit: 'unset'
+    objectfit: 'unset',
+    linkText: 'Python documentation',
   },
   { key: 8, 
     content: 'React', 
     image: '/reactLogo.png', 
     details: '+ Several Github Projects and Intern using React.', 
-    objectfit: 'contain'
+    objectfit: 'contain',
+    linkText: 'React documentation',
   },
   { key: 9, 
     content: 'NextJS', 
     image: '/next.svg', 
     details: '+ This Portfolio and Meyd.it Intern using NextJS.', 
-    objectfit: 'unset'
+    objectfit: 'unset',
+    linkText: 'NextJS documentation',
   },
   { key: 10, 
     content: 'IYCL Mekari Competition Rank #23', 
     image: '/iycl.png', 
     details: '+ Participated in IYCL Mekari Competition\n + Achieved Rank #23.', 
-    objectfit: 'contain'
+    objectfit: 'contain',
+    linkText: 'Check Certificate',
   },
   { key: 11, 
     content: 'Silver Standard IAYP', 
     image: '/iayp.jpg', 
     details: '+ Achieved Silver Standard for International Award for Young People.', 
-    objectfit: 'unset'
+    objectfit: 'unset',
+    linkText: 'Check Certificate',
   },
 ];
 const DynamicNavbar = dynamic(() => import('./components/navbar'), {
@@ -90,7 +101,6 @@ const DynamicBlob = dynamic(() => import('./components/blob'), {
 export default function Home() {
   const names = ['Jordan J.', 'JJ.'];
   const roles = ['Cyber Security.', 'Backend.', 'Frontend.']
-
 
   useEffect(() => {
     let details = window.navigator.userAgent;
@@ -111,8 +121,9 @@ export default function Home() {
   }, []);
   return (
     <ParallaxProvider scrollAxis='vertical'>
-            <DynamicNavbar />
+        <button className={styles.fbutton} id='fancy-button'><span>Click Me!</span></button>
         <ThreeParticleComponent />
+        <DynamicNavbar />
         <main className={`${styles.root} ${styles.fadein}`}>
       <Parallax translate='yes' translateY={[-25,25]}>
         {/**
@@ -156,15 +167,6 @@ export default function Home() {
           <DynamicBlob />
         </Box>
         </div>
-        <div style={{ 
-          height: '20dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-          <FancyButton ButtonText='SHIFT COLORS'/>
-        </div>
       </Parallax>
       <div className={styles.projectDiv} style={{ padding: '20px' }}>
         <Typography variant="h3" align="left" color='#e3e3e3' style={{
@@ -189,7 +191,7 @@ export default function Home() {
         alignItems: 'center',
       }}
     >
-        <ElasticCarousel objectfit={item.objectfit} key={item.key} imageUrl={item.image} title={item.content} details={item.details} />
+        <ElasticCarousel linkTextBack={item.linkText} objectfit={item.objectfit} key={item.key} imageUrl={item.image} title={item.content} details={item.details} />
     </Grid>
   ))}
 </Grid>

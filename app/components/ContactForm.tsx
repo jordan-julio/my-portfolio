@@ -6,25 +6,37 @@ import { TextareaAutosize } from '@mui/material';
 import FancyButton from './fancyButton';
 
 
+const Modal = ({ message, onClose } : {message:any, onClose:any}) => {
+	return (
+	  <div className={styles.modalBackground}>
+		<div className={styles.modalContainer}>
+		  <div className={styles.modalContent}>
+			<p>{message}</p>
+		  </div>
+		  <button className={styles.closeButton} onClick={onClose}>Close</button>
+		</div>
+	  </div>
+	);
+  };
+
 export default function Contactform() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
     const [emailBody, setEmailBody] = useState('A message from your portfolio!');
+    const [showModal, setShowModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const [autoCorrectedEmail, setAutoCorrectedEmail] = useState('');
+	const [modalMessage, setModalMessage] = useState('');
+	const [autoCorrectedEmail, setAutoCorrectedEmail] = useState('');
     const abstractApikey = process.env.NEXT_PUBLIC_ABSTRACTAPI;
     const handleEmailChange = (e: any) => {
         setEmail(e.target.value);
-        setEmailBody(`Name: ${name}\nEmail: ${email}\nDescription: ${message}`);
     };
     const handleNameChange = (e: any) => {
         setName(e.target.value);
-        setEmailBody(`Name: ${name}\nEmail: ${email}\nDescription: ${message}`);
     };
     const handleMessageChange = (e: any) => {
         setMessage(e.target.value);
-        setEmailBody(`Name: ${name}\nEmail: ${email}\nDescription: ${message}`);
     };
     const sendmailToMe = async () => {
         await fetch("/api/sendEmail", {
@@ -38,14 +50,17 @@ export default function Contactform() {
                 to: [{ email: "jordan.julio.jap@gmail.com", name: "Jordan J" }],
                 subject: "Someone contacted you from Portfolio!"
               }],
-              content: [{ type: "text/plain", value: emailBody }],
+              content: [{ type: "text/plain", value: `Name: ${name}\nEmail: ${email}\nDescription: ${message}` }],
               from: { email: "jordan.julio.jap@hotmail.com", name: "Portfolio Contact" },
               reply_to: { email: "jordan.julio.jap@hotmail.com", name: "Portfolio Contact" }
             })
           })
           .then(response => response.json())
           .then(data => console.log(data))
-          .catch((error) => console.error('Error:', error));
+          .catch((error) => {
+			console.error('Error:', error);
+			setModalMessage('Email Sending is being fixed. Please contact jordan141202@gmail.com');
+		});
     }
 
     const sendmailToOthers = async () => {
@@ -76,7 +91,7 @@ export default function Contactform() {
                       </li>
                       <li>
                         <a href="https://www.linkedin.com/in/jordan-julio-jap-370331189">
-                          <img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn" width="20" height="20">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="20" height="20">
                           LinkedIn
                         </a>
                       </li>
@@ -90,9 +105,22 @@ export default function Contactform() {
             })
           })
           .then(response => response.json())
-          .then(data => console.log(data))
-          .catch((error) => console.error('Error:', error));
+          .then(data => {
+			console.log(data)
+			// clear form
+			const form = document.querySelector('#form')
+		})
+          .catch((error) => {
+			console.error('Error:', error)
+            setModalMessage('Error sending email. Please contact jordan141202@gmail.com');
+            setShowModal(true);
+		});
     }
+
+	const closeModal = () => {
+        setShowModal(false);
+        setModalMessage('');
+    };
 
     const checkEmail = async () => {
         if (email !== '' && email.includes('@')) {
@@ -114,6 +142,28 @@ export default function Contactform() {
             });
         }
     }
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		if (email !== '' && name !== '' && message !== '') {
+			try {
+				await sendmailToMe();
+				await sendmailToOthers();
+				setEmail('');
+				setName('');
+				setMessage('');
+				setModalMessage('Email Sent!');
+				setShowModal(true);
+				// Clear form fields
+			} catch (error) {
+				// Handle error, set modal message accordingly
+				setModalMessage('Error sending email. Please try again.');
+				setShowModal(true);
+			}
+		}
+	}
+	
+
     return (
         <div className={styles.contactdiv}>
 	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 563" fill="None" className={styles.svg}>
@@ -411,14 +461,14 @@ export default function Contactform() {
 					</g>
 			</g>
 	</svg>
-	<form className={styles.form} >
+	<form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
 		<h1 className="title text-center mb-4">Contact Me</h1>
 			<div className="form-group position-relative">
 				<label htmlFor="formname" className="d-block">
 					<i className="icon" data-feather="user"></i>
 				</label>
 				<div className={styles.inputbox}>
-                    <input className={styles.inputText} onChange={handleNameChange} required={true} type="text" id='formname' />
+                    <input value={name} className={styles.inputText} onChange={handleNameChange} required={true} type="text" id='formname' />
                     <span>Name</span>
                     <i></i>
                 </div>
@@ -454,6 +504,7 @@ export default function Contactform() {
                     Message
                 </label>
                     <TextareaAutosize
+						value={message}
                         aria-label="minimum height"
                         minRows={3}
                         maxRows={3}
@@ -466,11 +517,10 @@ export default function Contactform() {
                 </div>
 			</div>
 			<div className="text-center">
-				<FancyButton ButtonText='Send Contact' onClick={() => {
-                    sendmailToMe();
-                    sendmailToOthers();
-                }} style={styles.customButton} disabled={errorMessage !== '' || autoCorrectedEmail !== ''} />
+				<FancyButton ButtonText='Send Contact' type='submit' style={styles.customButton} disabled={errorMessage !== '' || autoCorrectedEmail !== ''} />
 			</div>
+			{/** Error message **/}
+			{showModal && <Modal message={modalMessage} onClose={closeModal} />}
 	</form>
 	
 </div>

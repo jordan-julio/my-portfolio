@@ -95,7 +95,7 @@ z-index: 1;
 
 .blobImage {
     width: auto;
-    height: 60dvh !important;
+    height: 70dvh !important;
     object-fit: contain;
     z-index: 1;
     position: relative !important;

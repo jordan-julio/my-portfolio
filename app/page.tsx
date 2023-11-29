@@ -125,7 +125,7 @@ export default function Home() {
         <ThreeParticleComponent />
         <DynamicNavbar />
         <main className={`${styles.root} ${styles.fadein}`}>
-      <Parallax translate='yes' translateY={[-25,25]}>
+      <Parallax translate='yes' translateY={[-30,30]}>
         {/**
          * https://github.com/klevron/threejs-toys
          */}

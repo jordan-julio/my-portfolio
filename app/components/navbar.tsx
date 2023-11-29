@@ -15,7 +15,7 @@ import FancyButton from './fancyButton';
 
 const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const isMobile = useMediaQuery('(max-width:600px)');
+  const isMobile = useMediaQuery('(max-width:665px)');
   let details = window.navigator.userAgent;
   let regexp = /android|iphone|kindle|ipad/i;
   let isMobileDevice = regexp.test(details);
@@ -33,6 +33,16 @@ const Navbar: React.FC = () => {
       setIsLoading(false);
     }, 5000);  // 2 seconds delay
   }, [pathname, searchParams]);
+
+  const handleDrawerClose = () => {
+    setSlideToRight(true);
+    setDisableNativeClose(true);
+    setTimeout(() => {
+      setMobileOpen(false);
+      setSlideToRight(false);
+    }, 100);
+  };
+
   useEffect(() => {
     if (isMobileDevice) {
       const card = document.querySelector("#card") as HTMLDivElement;
@@ -41,23 +51,19 @@ const Navbar: React.FC = () => {
         card.style.setProperty('--after-display', 'none');
       }
     }
+    if (isMobile === false) {
+      handleDrawerClose();
+    }
   }, [isMobileDevice, isMobile]);
-  
-  const handleDrawerClose = () => {
-    setSlideToRight(true);
-    setDisableNativeClose(true);
-    setTimeout(() => {
-      setMobileOpen(false);
-      setSlideToRight(false);
-    }, 300);
-  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <div>
+    <div style={{
+      padding: '5dvh',
+    }}>
       <IconButton style={{
         position: 'relative',
         top: '5%',
@@ -70,8 +76,8 @@ const Navbar: React.FC = () => {
         flexDirection: 'column',
         alignItems: 'center',
       }}>
-        <Link href='/' style={{ width: '90%', height: '100%', display: '-webkit-inline-box' }}><Button color="inherit" className={styles.buttons}><HomeIcon style={{ marginBottom: '3px', height: 'auto', width: '20px' }} /> Home</Button></Link>
-        <Link href='/aboutme' style={{ width: '90%', height: '100%', display: '-webkit-inline-box' }}><Button color="inherit" className={styles.buttons}><PersonOutlineIcon style={{ marginBottom: '4px', height: 'auto', width: '20px' }} />About Me</Button></Link>
+        <Link href='/' style={{ width: '100%', height: '100%', display: '-webkit-inline-box' }}><Button color="inherit" className={styles.buttons}><HomeIcon style={{ marginBottom: '3px', height: 'auto', width: '20px' }} /> Home</Button></Link>
+        <Link href='/aboutme' style={{ width: '100%', height: '100%', display: '-webkit-inline-box' }}><Button color="inherit" className={styles.buttons}><PersonOutlineIcon style={{ marginBottom: '4px', height: 'auto', width: '20px' }} />About Me</Button></Link>
       </List>
     </div>
   );
@@ -117,13 +123,13 @@ const Navbar: React.FC = () => {
               <div className={styles.card} style={{ marginTop: '10px' }} id='card'>
                 <SocialLinks />
               </div>
-              <Drawer 
-                anchor={'left'} 
+              <Drawer
+                anchor={'right'} 
                 open={mobileOpen} 
                 onClose={disableNativeClose ? undefined : handleDrawerClose} // Disable native close behavior here
                 PaperProps={{ 
-                  style: { width: '100%' },
-                  className: slideToRight ? styles.slideToRight : ''
+                  style: { width: '100%', backgroundSize: 'cover' },
+                  className: styles.drawer,
                 }}
               >
                 {drawer}

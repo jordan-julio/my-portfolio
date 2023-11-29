@@ -9,6 +9,7 @@
 .menuButton {
     margin-left: 10px;
     color: #e3e3e3;
+    margin-top: 10px;
 }
 .title {
     flex-grow: 1;
@@ -22,11 +23,16 @@
     padding-top: 10px;
     padding-bottom: 10px;
     align-self: center;
+    color: #ecdfd1;
 }
 
 .drawer {
   /* Your drawer styles */
   transition: transform 300ms ease-out;
+  background-image: url('../../public/animatedGif.gif');
+  transform: translateX(100%);
+  background-position-x: center;
+  background-position-y: center;
 }
 
 .slideToRight {

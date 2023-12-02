@@ -3,15 +3,13 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import styles from './navbar.module.css';
-import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, ListItem, useMediaQuery } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Button, Drawer, List, useMediaQuery } from '@mui/material';
 import Menu from '@mui/icons-material/Menu';
-import Image from "next/legacy/image";
 import Link from 'next/link';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import CloseIcon from '@mui/icons-material/Close';
 import Loading from './loading';
-import FancyButton from './fancyButton';
 
 const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -19,27 +17,21 @@ const Navbar: React.FC = () => {
   let details = window.navigator.userAgent;
   let regexp = /android|iphone|kindle|ipad/i;
   let isMobileDevice = regexp.test(details);
-  const [slideToRight, setSlideToRight] = React.useState(false);
   const [disableNativeClose, setDisableNativeClose] = React.useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-      setIsLoading(true);
-    
-    // Mock delay to simulate loading
     setTimeout(() => {
       setIsLoading(false);
     }, 5000);  // 2 seconds delay
   }, [pathname, searchParams]);
 
   const handleDrawerClose = () => {
-    setSlideToRight(true);
     setDisableNativeClose(true);
     setTimeout(() => {
       setMobileOpen(false);
-      setSlideToRight(false);
     }, 100);
   };
 

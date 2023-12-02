@@ -1,4 +1,5 @@
 //carousels/Elastic.js
+'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
 import styles from './elasticCarousel.module.css'

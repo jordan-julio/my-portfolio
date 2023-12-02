@@ -100,24 +100,15 @@ export default function Home() {
   }
 
   return (
-    <ParallaxProvider>
+    <ParallaxProvider scrollAxis='vertical'>
       <DynamicNavbar />
-      <main className={`${styles.root}${styles.fadein}`}>
-        <div style={{ display: 'flex', flexDirection: 'row', height: '100dvh', minHeight: '1000px', overflow: 'hidden' }}>
-          <div style={{ 
-            display: 'flex',
-            width: '30%',
-            height: '100%',
-            background: '#e9e9e9',
-            flexDirection: 'column',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-            borderTopLeftRadius: '15px',
-            borderBottomLeftRadius: '15px',
-            marginLeft: '20px',
-            marginTop: '20px',
-            padding: '10px',
-          }}>
+      <main className={`${styles.root} ${styles.fadein}`}>
+        {/*
+        * Spotify while yellow red buttons
+        */}
+        <Box className={styles.firstDiv}></Box>
+        <Box className={styles.secondDiv}>
+          <Box className={styles.spotifyDiv}>
             <Box sx={{ height: '28%', width: '95%', borderRadius: '15px', backgroundColor: '#212121', padding: '30px', overflow: 'hidden', justifyContent: 'space-around' }}>
               <Image src='/spotify.svg' width={400} height={100} alt={'Spotify logo'} style={{ width: '50%', height: 'auto', objectFit: 'scale-down' }}/>  
               <Typography fontFamily={'sans-serif'} color={'#2dbd59'} fontSize={'2.5rem'}>Jordan Julio J.</Typography>
@@ -126,42 +117,25 @@ export default function Home() {
             <Box sx={{ height: '68%', width: '95%', borderRadius: '15px', backgroundColor: '#212121' }}>
               
             </Box>
-          </div>
+          </Box>
           {/** Recently Played default can change to top songs */}
-          <div style={{
-            display: 'flex',
-            width: '45%',
-            height: '100%',
-            background: '#e9e9e9',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-            marginTop: '20px',
-            paddingTop: '10px',
-            paddingBottom: '10px',
-          }}>
+          <Box className={styles.spotifyDivTwo}>
             <Box sx={{ height: '97%', width: '95%', borderRadius: '15px', backgroundColor: '#212121' }}>
 
             </Box>
-          </div>
+          </Box>
           {/** Now Playing */}
-          <div style={{
-            display: 'flex',
-            width: '25%',
-            height: '100%',
-            background: '#e9e9e9',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-            borderTopRightRadius: '15px',
-            borderBottomRightRadius: '15px',
-            marginRight: '20px',
-            marginTop: '20px',
-            padding: '10px',
-          }}>
-            <Box sx={{ height: '97%', width: '95%', borderRadius: '15px', backgroundColor: '#212121' }}>
+          <Box className={styles.spotifyDivThree}>
+            <Box style={{ position: 'relative', top: '-25px', right: '0', width: '100%' }}>
+              <Box style={{ position: 'absolute', right: '10px', background: 'red', width: '17px', height: '17px', borderRadius: '50%' }}></Box>
+              <Box style={{ position: 'absolute', right: '40px', background: 'yellow', width: '17px', height: '17px', borderRadius: '50%' }}></Box>
+              <Box style={{ position: 'absolute', right: '70px', background: 'grey', width: '17px', height: '17px', borderRadius: '50%' }}></Box>
+            </Box>
+            <Box sx={{ height: '97%', width: '95%', borderRadius: '15px', backgroundColor: '#212121', overflowY: 'visible' }}>
 
             </Box>
-          </div>
-        </div>
+          </Box>
+        </Box>
       </main>
     </ParallaxProvider>
   )

@@ -7,6 +7,7 @@ import Image from "next/image";
 import styled from 'styled-components';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 const StyledCarousel = styled(Carousel)`
 position: relative;
 width: 100%;
@@ -55,7 +56,7 @@ button.rec-dot:hover, button.rec-dot:active, button.rec-dot:focus  {
 }
 `
 
-export default function ElasticCarousel({ imageUrl, title, details, objectfit, linkTextBack } : { imageUrl: string, title: string, details: string, objectfit: string, linkTextBack: string }) {
+export default function ElasticCarousel({ imageUrl, title, details, objectfit, linkTextBack, link } : { imageUrl: string, title: string, details: string, objectfit: string, linkTextBack: string, link: string }) {
     const [items, setItems] = useState([
         {id: 1, title: 'item #1', imageUrl: '/SiamWeb.png'},
         {id: 2, title: 'item #2', imageUrl: '/meyd.it.png'},
@@ -92,7 +93,7 @@ export default function ElasticCarousel({ imageUrl, title, details, objectfit, l
         </div>
         <div className={styles.lowerpart}>
             <div className={styles.lowerpartface}>{title}</div>
-            <div className={styles.lowerpartback}><Button>{linkTextBack}</Button></div>
+            <div className={styles.lowerpartback}><Link href={link}>{linkTextBack}</Link></div>
         </div>
         </div>
     );

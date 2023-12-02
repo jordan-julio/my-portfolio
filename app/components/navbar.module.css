@@ -1,9 +1,8 @@
 .root {
     flex-grow: 1;
     background: transparent;
-    z-index: 999;
-    position: absolute;
-    width: 80dvw;
+    position: relative !important;
+    width: 100dvw;
     right: 0;
 }
 .menuButton {

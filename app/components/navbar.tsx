@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
         top: '5%',
         left: '90%',
       }} edge="end" color="inherit" aria-label="menu" onClick={handleDrawerClose}>
-        <CloseIcon />
+        <CloseIcon htmlColor='#ecdfd1'/>
       </IconButton>
       <List style={{ 
         display: 'flex',

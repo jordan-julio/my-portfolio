@@ -8,6 +8,7 @@ const slides = [
       details: `+ Worked as a Wix Developer Intern.\n+ Created a Tour & Travel Website.`,
       objectfit: 'unset',
       linkText: 'Visit Website',
+      link: "https://info618621.wixsite.com/my-site"
     },
     { key: 2, 
       content: 'Meyd.it (Full Stack Developer Intern)', 
@@ -15,6 +16,7 @@ const slides = [
       details: '+ Worked as a Full Stack Developer Intern.\n+ Created a Fashion Website for a Startup Company (Meyd.it).\n+ Used AdonisJS, NextJS, and PostgreSQL.', 
       objectfit: 'unset',
       linkText: 'Visit Website',
+      link: "https://meyd.it"
     },
     { key: 3, 
       content: 'Inventory System with POS (Personal Project)', 
@@ -22,6 +24,7 @@ const slides = [
       details: '+ Created an Inventory System with POS.\n + Used Laravel and Phpmyadmin.', 
       objectfit: 'unset',
       linkText: 'Visit Website',
+      link: "https://inventorysystem.btc-board.com/"
     },
     { key: 4, 
       content: 'C Language', 
@@ -29,6 +32,7 @@ const slides = [
       details: '+ Experience in C language from university courses, and competitive programming.', 
       objectfit: 'contain',
       linkText: 'C documentation',
+      link: "https://devdocs.io/c/"
     },
     { key: 5, 
       content: 'JavaScript', 
@@ -36,6 +40,7 @@ const slides = [
       details: '+ Several Interns and Projects using JavaScript.\n + Used in University Courses.', 
       objectfit: 'contain',
       linkText: 'JS documentation',
+      link: "https://devdocs.io/javascript/"
     },
     { key: 6, 
       content: 'TypeScript',
@@ -43,6 +48,7 @@ const slides = [
       details: '+ Experience in TypeScript from university courses.\n + Used to make this portfolio and Meyd.it Intern.', 
       objectfit: 'unset',
       linkText: 'TS documentation',
+      link: "https://devdocs.io/typescript/"
     },
     { key: 7, 
       content: 'Python Language', 
@@ -50,6 +56,7 @@ const slides = [
       details: '+ My first and preferred programming language for competitive programming.\n + Used in University Courses.', 
       objectfit: 'unset',
       linkText: 'Python documentation',
+      link: "https://devdocs.io/python~3.7/"
     },
     { key: 8, 
       content: 'React', 
@@ -57,6 +64,7 @@ const slides = [
       details: '+ Several Github Projects and Intern using React.', 
       objectfit: 'contain',
       linkText: 'React documentation',
+      link: "https://reactjs.org/docs/getting-started.html"
     },
     { key: 9, 
       content: 'NextJS', 
@@ -64,20 +72,23 @@ const slides = [
       details: '+ This Portfolio and Meyd.it Intern using NextJS.', 
       objectfit: 'unset',
       linkText: 'NextJS documentation',
+      link: "https://nextjs.org/docs/getting-started"
     },
     { key: 10, 
       content: 'IYCL Mekari Competition Rank #23', 
       image: '/iycl.png', 
       details: '+ Participated in IYCL Mekari Competition\n + Achieved Rank #23.', 
       objectfit: 'contain',
-      linkText: 'Check Certificate',
+      linkText: 'Go To Certificate',
+      link: "https://drive.google.com/file/d/1mrjBFlIaY4b6LzMkXKBvXS06O63brmS-/view"
     },
     { key: 11, 
       content: 'Silver Standard IAYP', 
       image: '/iayp.jpg', 
       details: '+ Achieved Silver Standard for International Award for Young People.', 
       objectfit: 'unset',
-      linkText: 'Check Certificate',
+      linkText: 'Go To Award',
+      link: "https://www.linkedin.com/in/jordan-julio-jap-370331189/details/certifications/"
     },
   ];
 
@@ -99,7 +110,7 @@ export default function ExpItems() {
                     alignItems: 'center',
                 }}
                 >
-                    <ElasticCarousel linkTextBack={item.linkText} objectfit={item.objectfit} key={item.key} imageUrl={item.image} title={item.content} details={item.details} />
+                    <ElasticCarousel link={item.link} linkTextBack={item.linkText} objectfit={item.objectfit} key={item.key} imageUrl={item.image} title={item.content} details={item.details} />
                 </Grid>
             ))}
         </Grid>

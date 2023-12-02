@@ -282,7 +282,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: box-shadow 3s ease-in-out, background-color 3s ease-in-out, color 3s ease-in-out, border 3s ease-in-out;
+  transition: all 1.5s ease-in-out;
   animation: fadeIn 4s ease-in-out;
 }
 
@@ -347,7 +347,12 @@
 }
 .innerTextDiv {
   transform: translateY(5%);
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
+
 .projectDiv {
   display: flex;
   flex-direction: column;

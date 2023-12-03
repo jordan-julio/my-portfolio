@@ -1,10 +1,10 @@
 .fadein {
-    animation: opacityin 6.5s ease-in;
+    animation: opacityin 4s ease-in;
   }
   
   @keyframes opacityin {
     0% {
-      opacity: 0;
+      opacity: 0.8;
     }
     100% {
       opacity: 1;

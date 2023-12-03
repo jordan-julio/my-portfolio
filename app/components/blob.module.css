@@ -96,16 +96,19 @@ z-index: 1;
 .blobImage {
     width: auto;
     height: 70dvh !important;
-    object-fit: contain;
     z-index: 1;
     position: relative !important;
     padding: 10px;
+    object-fit: contain;
 }
 @media (max-width: 990px) {
 .blob {
     width: 80% !important;
     transform: translateX(15%);
     margin-bottom: 50px;
+}
+.blobImage {
+    height: 60dvh !important;
 }
 }
 

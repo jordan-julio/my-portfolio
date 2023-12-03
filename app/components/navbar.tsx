@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 import styles from './navbar.module.css';
 import { AppBar, Toolbar, IconButton, Button, Drawer, List, useMediaQuery } from '@mui/material';
 import Menu from '@mui/icons-material/Menu';
@@ -9,7 +8,6 @@ import Link from 'next/link';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import CloseIcon from '@mui/icons-material/Close';
-import Loading from './loading';
 
 const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -18,15 +16,6 @@ const Navbar: React.FC = () => {
   let regexp = /android|iphone|kindle|ipad/i;
   let isMobileDevice = regexp.test(details);
   const [disableNativeClose, setDisableNativeClose] = React.useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 5000);  // 2 seconds delay
-  }, [pathname, searchParams]);
 
   const handleDrawerClose = () => {
     setDisableNativeClose(true);
@@ -68,8 +57,8 @@ const Navbar: React.FC = () => {
         flexDirection: 'column',
         alignItems: 'center',
       }}>
-        <Link href='/' style={{ width: '100%', height: '100%', display: '-webkit-inline-box' }}><Button color="inherit" className={styles.buttons}><HomeIcon style={{ marginBottom: '3px', height: 'auto', width: '20px' }} /> Home</Button></Link>
-        <Link href='/aboutme' style={{ width: '100%', height: '100%', display: '-webkit-inline-box' }}><Button color="inherit" className={styles.buttons}><PersonOutlineIcon style={{ marginBottom: '4px', height: 'auto', width: '20px' }} />About Me</Button></Link>
+        <Link onClick={handleDrawerClose} href='/' style={{ width: '100%', height: '100%', display: '-webkit-inline-box' }}><Button color="inherit" className={styles.buttons}><HomeIcon style={{ marginBottom: '3px', height: 'auto', width: '20px' }} /> Home</Button></Link>
+        <Link onClick={handleDrawerClose} href='/aboutme' style={{ width: '100%', height: '100%', display: '-webkit-inline-box' }}><Button color="inherit" className={styles.buttons}><PersonOutlineIcon style={{ marginBottom: '4px', height: 'auto', width: '20px' }} />About Me</Button></Link>
       </List>
     </div>
   );
@@ -98,13 +87,6 @@ const Navbar: React.FC = () => {
   );
   return (
     <div className={styles.root}>
-      {
-        isLoading ? 
-          <Loading />
-        : 
-        <>
-        </>
-      }
       <AppBar className={styles.topBar} position="static" id='topbar'>
         <Toolbar className={styles.topBar}>
           {isMobile ? (

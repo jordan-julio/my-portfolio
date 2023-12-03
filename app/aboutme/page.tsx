@@ -8,13 +8,15 @@ import { Box, Button, Typography } from '@mui/material';
 import qs from 'qs';
 import Image from 'next/image';
 import FancyButton from '../components/fancyButton';
+import Navbar from '../components/navbar';
 
-const DynamicNavbar = dynamic(() => import('../components/navbar'), {
+
+const DynamicLoading = dynamic(() => import('../components/loading'), {
   ssr: false,
 });
 
-
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
   const [token, setToken] = useState('');
   const [type, setType] = useState('tracks');
   useEffect(() => {
@@ -99,9 +101,20 @@ export default function Home() {
     });
   }
 
+  useEffect(() => {
+    // Set a condition to change the loading state
+    // For example, you can check if certain data is loaded, or just wait for a moment
+    const timer = setTimeout(() => setIsLoading(false), 4000); // Adjust time as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <DynamicLoading />;
+  }
+
   return (
     <ParallaxProvider scrollAxis='vertical'>
-      <DynamicNavbar />
       <main className={`${styles.root} ${styles.fadein}`}>
         {/*
         * Spotify while yellow red buttons

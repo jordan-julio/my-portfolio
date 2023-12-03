@@ -4,20 +4,22 @@ import { Typography, Box } from '@mui/material';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import dynamic from 'next/dynamic';
 import Typed from 'react-typed';
-import { useEffect } from 'react';
-import ThreeParticleComponent from './components/threeparticle';
+import { useEffect, useState } from 'react';
 import Contactform from './components/ContactForm';
 import ExpItems from './components/ExpItems';
+import Blob from './components/blob';
 
-const DynamicNavbar = dynamic(() => import('./components/navbar'), {
+const DynamicLoading = dynamic(() => import('./components/loading'), {
   ssr: false,
 });
 
-const DynamicBlob = dynamic(() => import('./components/blob'), {
+const DynamicThreeParticleComponent = dynamic(() => import('./components/threeparticle'), {
   ssr: false,
 });
+
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
   const names = ['Jordan J.', 'JJ.'];
   const roles = ['Cyber Security.', 'Backend.', 'Frontend.']
   
@@ -25,14 +27,25 @@ export default function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    // Set a condition to change the loading state
+    // For example, you can check if certain data is loaded, or just wait for a moment
+    const timer = setTimeout(() => setIsLoading(false), 4000); // Adjust time as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <DynamicLoading />;
+  }
   return (
     <ParallaxProvider scrollAxis='vertical'>
       {/**
        * Top Bar and Main Background
        */}
       <button className={styles.fbutton} id='fancy-button'><span>Click Me!</span></button>
-      <ThreeParticleComponent />
-      <DynamicNavbar />
+      <DynamicThreeParticleComponent />
       <main className={`${styles.root} ${styles.fadein}`}>
         <Parallax translate='yes' translateY={[-30,30]}>
         {/**
@@ -74,7 +87,7 @@ export default function Home() {
               </div>
             </div>
             <Box className={styles.imageDiv}>
-              <DynamicBlob />
+              <Blob />
             </Box>
           </div>
         </Parallax>
@@ -101,3 +114,7 @@ export default function Home() {
     </ParallaxProvider>
   )
 }
+function setIsLoading(arg0: boolean) {
+  throw new Error('Function not implemented.');
+}
+

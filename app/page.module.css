@@ -286,12 +286,25 @@
   animation: fadeIn 4s ease-in-out;
 }
 
+@media (max-width: 414px) {
+  .fbutton {
+    width: 150px;
+    height: 150px;
+    font-size: 13px;
+    top: -75px;
+    left: -75px;
+  }
+  .fbutton span {
+    transform: translate(31px, 23px) !important;
+  }
+}
+
 @keyframes fadeIn {
   0% {
-      opacity: 0;
+      opacity: 1;
   }
   60% {
-      opacity: 0.5;
+      opacity: 1;
   }
   100% {
       opacity: 1;
@@ -440,7 +453,7 @@
 
 @keyframes opacityin {
   0% {
-    opacity: 0;
+    opacity: 1;
   }
   100% {
     opacity: 1;

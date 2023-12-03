@@ -6,9 +6,8 @@
     right: 0;
 }
 .menuButton {
-    margin-left: 10px;
     color: #e3e3e3;
-    margin-top: 10px;
+    margin-top: 10px !important;
 }
 .title {
     flex-grow: 1;
@@ -18,11 +17,11 @@
 .buttons {
     margin-right: 30px !important;
     height: 100%;
-    min-height: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    align-self: center;
-    color: #ecdfd1;
+    min-height: 100% ;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    align-self: center !important;
+    color: #ecdfd1 !important;
 }
 
 .drawer {
@@ -111,7 +110,7 @@
   overflow: hidden;
   height: 44px;
   width: 200px;
-  margin-left: 20px;
+  margin-right: 20px;
   border-radius: 20px;
 }
 

@@ -95,7 +95,7 @@ export default function Home() {
         * Experiences, Skills, and Achievements Section
         */}
         <div className={styles.projectDiv} style={{ padding: '20px' }}>
-          <Typography variant="h3" align="left" color='#e3e3e3' style={{
+          <Typography variant="h3" align="left" color='#D3D2EC' style={{
             width: '100%',
             marginBottom: '20px',
             textAlign: 'center',

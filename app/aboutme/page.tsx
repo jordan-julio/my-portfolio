@@ -102,9 +102,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    // Set a condition to change the loading state
-    // For example, you can check if certain data is loaded, or just wait for a moment
-    const timer = setTimeout(() => setIsLoading(false), 4000); // Adjust time as needed
+    const timer = setTimeout(() => setIsLoading(false), 4000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -134,7 +132,8 @@ export default function Home() {
           {/** Recently Played default can change to top songs */}
           <Box className={styles.spotifyDivTwo}>
             <Box sx={{ height: '97%', width: '95%', borderRadius: '15px', backgroundColor: '#212121' }}>
-
+              <FancyButton onClick={getSpotifyTopItems} ButtonText='Get Spotify Top Items' />
+              <FancyButton onClick={getSpotifyRecentlyPlayed} ButtonText='Get Recently Played' />
             </Box>
           </Box>
           {/** Now Playing */}

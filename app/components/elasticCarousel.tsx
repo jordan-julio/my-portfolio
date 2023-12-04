@@ -1,13 +1,12 @@
 //carousels/Elastic.js
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Carousel from 'react-elastic-carousel';
 import styles from './elasticCarousel.module.css'
 import Image from "next/image";
 import styled from 'styled-components';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import Link from 'next/link';
+import { Button } from '@mui/material';
 const StyledCarousel = styled(Carousel)`
 position: relative;
 width: 100%;
@@ -57,17 +56,6 @@ button.rec-dot:hover, button.rec-dot:active, button.rec-dot:focus  {
 `
 
 export default function ElasticCarousel({ imageUrl, title, details, objectfit, linkTextBack, link } : { imageUrl: string, title: string, details: string, objectfit: string, linkTextBack: string, link: string }) {
-    const [items, setItems] = useState([
-        {id: 1, title: 'item #1', imageUrl: '/SiamWeb.png'},
-        {id: 2, title: 'item #2', imageUrl: '/meyd.it.png'},
-        {id: 3, title: 'item #3', imageUrl: '/inventoryweb.png'},
-    ]);
-    const breakPoints = [
-        { width: 1, itemsToShow: 1 },
-        { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-        { width: 768, itemsToShow: 3 },
-        { width: 1200, itemsToShow: 4 }
-    ];
     const imgRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
@@ -75,7 +63,7 @@ export default function ElasticCarousel({ imageUrl, title, details, objectfit, l
             imgRef.current.style.objectFit = objectfit;
         }
     }, [objectfit]);
-
+    const titles = title.split('\n').map((titlea, index) => <p key={index}>{titlea}</p>);
     const paragraphs = details.split('\n').map((paragraph, index) => <p key={index}>{paragraph}</p>);
     return (
         <div className={styles.card}>
@@ -92,8 +80,12 @@ export default function ElasticCarousel({ imageUrl, title, details, objectfit, l
             <div className={styles.upperpartback}>{paragraphs}</div>
         </div>
         <div className={styles.lowerpart}>
-            <div className={styles.lowerpartface}>{title}</div>
-            <div className={styles.lowerpartback}><Link href={link}>{linkTextBack}</Link></div>
+            <div className={styles.lowerpartface}>{titles}</div>
+            <div className={styles.lowerpartback}><Link href={link}><button className={styles.pushable} style={{
+                width: '100%',
+            }}><span className={styles.shadow}></span>
+            <span className={styles.edge}></span>
+            <span className={styles.front}>{linkTextBack}</span></button></Link></div>
         </div>
         </div>
     );

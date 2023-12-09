@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react';
 import dynamic from 'next/dynamic';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,6 +38,7 @@ export default function RootLayout({
         <DynamicNavbar />
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

@@ -21,18 +21,13 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    background: linear-gradient(to bottom, rgba(94, 98, 153, 1) 0%, rgb(118, 110, 151) 50%, rgba(52, 49, 67, 1) 100%);
+    background: transparent;
+    backdrop-filter: blur(20px);
     opacity: 0.8;
     transition: opacity 2s ease-in-out, border-radius 2s ease-in-out, box-shadow 2s ease-in-out;
     border-radius: 10px;
-    box-shadow: inset 7px 7px 14px #2a2b42,
+    box-shadow: inset 7px 7px 14px #7073ae,
     inset -7px -7px 14px #7073ae;
-  }
-  
-  .contactdiv:hover::before {
-    opacity: 1;
-    border-radius: 50px;
-    box-shadow: none;
   }
 
 

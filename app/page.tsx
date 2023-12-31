@@ -17,6 +17,10 @@ const DynamicThreeParticleComponent = dynamic(() => import('./components/threepa
   ssr: false,
 });
 
+const DynamicForm = dynamic(() => import('./components/ContactForm'), {
+  ssr: false,
+});
+
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -108,7 +112,7 @@ export default function Home() {
         * Contact Form Need To Modify Alert Page
         */}
         <Parallax className={styles.contact}>
-          <Contactform />
+          <DynamicForm />
         </Parallax>
       </main>
     </ParallaxProvider>

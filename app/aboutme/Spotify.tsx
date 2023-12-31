@@ -5,13 +5,11 @@ import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 import FancyButton from '../components/fancyButton';
 import axios from 'axios';
+import SpotifyPlaylistDiv from './SpotifyPlaylistDiv';
 
-function Spotify() {
+export function useToken() {
     const [token, setToken] = useState('');
-    const type = 'tracks';
-    const [currentlyPlaying, setCurrentlyPlaying] = useState({});
-    const [recentlyPlayed, setRecentlyPlayed] = useState({});
-    const [topItems, setTopItems] = useState({});
+    // ... rest of the code
     useEffect(() => {
         const getAccessToken = async () => {
         const refresh_token = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN;
@@ -36,6 +34,16 @@ function Spotify() {
         setToken(data.access_token);
         })
     }, []);
+    return token;
+}
+
+
+function Spotify() {
+    const token = useToken();
+    const type = 'tracks';
+    const [currentlyPlaying, setCurrentlyPlaying] = useState({});
+    const [recentlyPlayed, setRecentlyPlayed] = useState({});
+    const [topItems, setTopItems] = useState({});
 
     const getSpotifyCurrentlyPlaying = () => {
         const config = {
@@ -183,61 +191,7 @@ function Spotify() {
                             <p>Made By Me, # of songs, total playtime</p>
                         </div>
                     </Box>
-                    <TableContainer style={{ minHeight: '67%', maxHeight: '65%', borderRadius: '15px'}}>
-                    <Button onClick={getSpotifyUserPlaylists}>Get Spotify User Playlist</Button>
-                    <Table style={{ backgroundColor: '#212121' }}>
-                        <TableBody style={{  }}>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>A</TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                    </TableContainer>
+                    <SpotifyPlaylistDiv />
                 </Box>
                 </Box>
                 {/** Now Playing */}

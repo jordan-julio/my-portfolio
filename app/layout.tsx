@@ -1,9 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react';
-import dynamic from 'next/dynamic';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,10 +20,6 @@ export const metadata: Metadata = {
   description: 'Portfolio of Jordan Julio Jap',
 }
 
-const DynamicNavbar = dynamic(() => import('./components/navbar'), {
-  ssr: false,
-});
-
 export default function RootLayout({
   children,
 }: {
@@ -35,10 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <DynamicNavbar />
         {children}
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   )

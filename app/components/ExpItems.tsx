@@ -1,6 +1,3 @@
-import { Grid } from "@mui/material";
-import ElasticCarousel from "./elasticCarousel";
-
 const slides = [
     { key: 1,
       content: 'Siam Savvy\n(Web Developer Intern)',
@@ -104,24 +101,6 @@ const slides = [
 export default function ExpItems() {
 
     return (
-        <Grid container spacing={1} rowSpacing={6} columnSpacing={1}>
-            {slides.map((item) => (
-                <Grid 
-                item 
-                key={item.key} 
-                xs={12}  // Extra small screen, 1 item per row
-                sm={6}   // Small screen, 2 items per row
-                md={4}   // Medium and up, 3 items per row
-                lg={4}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-                >
-                    <ElasticCarousel link={item.link} linkTextBack={item.linkText} objectfit={item.objectfit} key={item.key} imageUrl={item.image} title={item.content} details={item.details} />
-                </Grid>
-            ))}
-        </Grid>
+      <></>
     );
 }

@@ -294,13 +294,6 @@ const Portfolio = () => {
               >
                 <Code className="w-8 h-8 text-white" />
               </motion.div>
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-              >
-                <Shield className="w-8 h-8 text-white" />
-              </motion.div>
             </div>
           </motion.div>
         </div>

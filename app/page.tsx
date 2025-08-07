@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, spring } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -465,7 +465,7 @@ const Portfolio = () => {
   }
 
   // Beautiful Framer Motion Image Slideshow
-  const ImageSlideshow = ({ images, title }) => {
+  const ImageSlideshow = ({ images, title }: ImageSlideshowProps) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [direction, setDirection] = useState(0);
 
@@ -479,7 +479,7 @@ const Portfolio = () => {
       setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
     };
 
-    const goToImage = (index) => {
+    const goToImage = (index: number) => {
       setDirection(index > currentImageIndex ? 1 : -1);
       setCurrentImageIndex(index);
     };
@@ -496,7 +496,7 @@ const Portfolio = () => {
 
     // Animation variants
     const slideVariants = {
-      enter: (direction) => ({
+      enter: (direction: number) => ({
         x: direction > 0 ? 300 : -300,
         opacity: 0,
         scale: 0.9
@@ -507,7 +507,7 @@ const Portfolio = () => {
         opacity: 1,
         scale: 1
       },
-      exit: (direction) => ({
+      exit: (direction: number) => ({
         zIndex: 0,
         x: direction < 0 ? 300 : -300,
         opacity: 0,
@@ -516,7 +516,7 @@ const Portfolio = () => {
     };
 
     const transition = {
-      x: { type: "spring", stiffness: 300, damping: 30 },
+      x: { type: spring, stiffness: 300, damping: 30 },
       opacity: { duration: 0.3 },
       scale: { duration: 0.3 }
     };
@@ -544,8 +544,11 @@ const Portfolio = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'flex';
+              const img = e.target as HTMLImageElement;
+              img.style.display = 'none';
+              if (img.nextSibling && img.nextSibling instanceof HTMLElement) {
+                (img.nextSibling as HTMLElement).style.display = 'flex';
+              }
             }}
           />
           <div className="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-slate-200 to-slate-300">
@@ -573,8 +576,11 @@ const Portfolio = () => {
               alt={`${title} - Image ${currentImageIndex + 1}`}
               className="w-full h-full object-cover"
               onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
+                const img = e.target as HTMLImageElement;
+                img.style.display = 'none';
+                if (img.nextSibling && img.nextSibling instanceof HTMLElement) {
+                  (img.nextSibling as HTMLElement).style.display = 'flex';
+                }
               }}
             />
             <div className="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-slate-200 to-slate-300">
